@@ -23,7 +23,7 @@ resource "vsphere_virtual_machine" "win2019-vm" {
   disk {
     size             = 40
     label            = "w2019-disk"
-    thin_provisioned = false
+    thin_provisioned = true
   }
 
   clone {
