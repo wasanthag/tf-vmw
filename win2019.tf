@@ -8,7 +8,7 @@ resource "vsphere_virtual_machine" "win2019-vm" {
   resource_pool_id = data.vsphere_resource_pool.pool.id
   datastore_id     = data.vsphere_datastore.datastore.id
 
-  scsi_type = data.vsphere_virtual_machine.win-template.scsi_type
+  scsi_type = data.vsphere_virtual_machine.win2019-template.scsi_type
 
   num_cpus                  = 4
   memory                    = 8192
