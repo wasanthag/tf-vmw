@@ -1,10 +1,11 @@
-data "vsphere_virtual_machine" "win-template" {
-  name          = "Windows2016-Template"
+data "vsphere_virtual_machine" "win2019-template" {
+  name          = "Win2019-Packer-Template"
+  folder        = "packer"
   datacenter_id = data.vsphere_datacenter.dc.id
 }
 
-resource "vsphere_virtual_machine" "win2016-vm" {
-  name             = "win2016-vm"
+resource "vsphere_virtual_machine" "win2019-vm" {
+  name             = "win2019-vm"
   resource_pool_id = data.vsphere_resource_pool.pool.id
   datastore_id     = data.vsphere_datastore.datastore.id
 
@@ -22,12 +23,12 @@ resource "vsphere_virtual_machine" "win2016-vm" {
 
   disk {
     size             = 40
-    label            = "w2016-disk"
+    label            = "w2019-disk"
     thin_provisioned = false
   }
 
   clone {
-    template_uuid = data.vsphere_virtual_machine.win-template.id
+    template_uuid = data.vsphere_virtual_machine.win2019-template.id
 
 
   }
