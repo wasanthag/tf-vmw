@@ -1,6 +1,5 @@
 data "vsphere_virtual_machine" "win2019-template" {
   name          = "Win2019-Packer-Template"
-  folder        = "packer"
   datacenter_id = data.vsphere_datacenter.dc.id
 }
 
