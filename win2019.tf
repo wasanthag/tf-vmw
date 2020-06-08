@@ -7,6 +7,7 @@ resource "vsphere_virtual_machine" "win2019-vm" {
   name             = "win2019-vm"
   resource_pool_id = data.vsphere_resource_pool.pool.id
   datastore_id     = data.vsphere_datastore.datastore.id
+  count = 2
 
   scsi_type = data.vsphere_virtual_machine.win2019-template.scsi_type
 
