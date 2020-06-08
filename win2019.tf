@@ -4,7 +4,7 @@ data "vsphere_virtual_machine" "win2019-template" {
 }
 
 resource "vsphere_virtual_machine" "win2019-vm" {
-  name             = "win2019-vm"
+  name             = "win2019-vm-${count.index + 1}"
   resource_pool_id = data.vsphere_resource_pool.pool.id
   datastore_id     = data.vsphere_datastore.datastore.id
   count = 2
@@ -29,12 +29,11 @@ resource "vsphere_virtual_machine" "win2019-vm" {
 
   clone {
     template_uuid = data.vsphere_virtual_machine.win2019-template.id
-
+ 
+}
   provisioner "local-exec" {
     working_dir = "../ansible"
     command = "sleep 120; sed -i '' 's/PUBLICIP/${vsphere_virtual_machine.windows2019-vm.public_ip}/g' inventory;ansible-playbook -i inventory playbooks.yml"
-  }
-}
   }
 }
 
