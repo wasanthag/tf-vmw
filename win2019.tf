@@ -11,7 +11,7 @@ resource "vsphere_virtual_machine" "win2019-vm" {
 
   scsi_type = data.vsphere_virtual_machine.win2019-template.scsi_type
 
-  num_cpus                  = 8
+  num_cpus                  = 4
   memory                    = 8192
   wait_for_guest_ip_timeout = 10
   guest_id = "windows9Server64Guest"
