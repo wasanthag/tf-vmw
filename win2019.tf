@@ -34,7 +34,7 @@ resource "vsphere_virtual_machine" "win2019-vm" {
 }
   provisioner "local-exec" {
     working_dir = "../ansible"
-    command = "sleep 120; cp inventory hosts; sed -i 's/PUBLICIP/${vsphere_virtual_machine.windows2019-vm.public_ip}/g' hosts;ansible-playbook -i hosts playbooks.yaml -v"
+    command = "sleep 120; cp inventory hosts; sed -i 's/PUBLICIP/${vsphere_virtual_machine.windows2019-vm.default_ip_address}/g' hosts;ansible-playbook -i hosts playbooks.yaml -v"
   }
 }
 
