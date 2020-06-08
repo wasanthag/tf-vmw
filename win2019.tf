@@ -4,10 +4,11 @@ data "vsphere_virtual_machine" "win2019-template" {
 }
 
 resource "vsphere_virtual_machine" "win2019-vm" {
-  name             = "win2019-vm-${count.index + 1}"
+  name             = "win2019-vm"
+  #name             = "win2019-vm-${count.index + 1}"
   resource_pool_id = data.vsphere_resource_pool.pool.id
   datastore_id     = data.vsphere_datastore.datastore.id
-  count = 2
+  #count = 2
 
   scsi_type = data.vsphere_virtual_machine.win2019-template.scsi_type
 
@@ -33,7 +34,7 @@ resource "vsphere_virtual_machine" "win2019-vm" {
 }
   provisioner "local-exec" {
     working_dir = "../ansible"
-    command = "sleep 120; sed -i '' 's/PUBLICIP/${vsphere_virtual_machine.windows2019-vm-${count.index + 1}.public_ip}/g' inventory;ansible-playbook -i inventory playbooks.yml"
+    command = "sleep 120; cp inventory hosts; sed -i 's/PUBLICIP/${vsphere_virtual_machine.windows2019-vm.public_ip}/g' hosts;ansible-playbook -i hosts playbooks.yaml -v"
   }
 }
 
