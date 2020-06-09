@@ -2,6 +2,12 @@
 - hosts: all
   gather_facts: true
   tasks:
+  - name: Disable Windows Defender
+    win_regedit:
+      key: "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows Defender\\Real-Time Protection"
+      value: DisableRealTimeMonitoring
+      datatype: dword
+      data: 1
   - name: Install Chocolately via Powershell
     win_shell: "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))"
   - name: Install notepadplusplus
