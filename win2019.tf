@@ -30,8 +30,8 @@ resource "vsphere_virtual_machine" "win2019-vm" {
     template_uuid = data.vsphere_virtual_machine.win2019-template.id
  
 }
-  provisioner "local-exec" {
-    command = "sleep 120; cp inventory hosts; sed -i 's/PUBLICIP/${vsphere_virtual_machine.win2019-vm.default_ip_address}/g' hosts;ansible-playbook -i hosts playbook.yaml -v"
-  }
+ # provisioner "local-exec" {
+ #   command = "sleep 120; cp inventory hosts; sed -i 's/PUBLICIP/${vsphere_virtual_machine.win2019-vm.default_ip_address}/g' hosts;ansible-playbook -i hosts playbook.yaml -v"
+ # }
 }
 
