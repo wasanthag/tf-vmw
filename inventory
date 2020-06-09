@@ -1,7 +1,7 @@
 vmw-win-host ansible_ssh_host=PUBLICIP
 
 [win]
-aws-win-host
+vmw-win-host
 
 [win:vars]
 ansible_connection=winrm
