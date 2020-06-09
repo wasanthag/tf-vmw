@@ -4,7 +4,7 @@ def tfCodeId = "example-${env.BUILD_NUMBER}"        //Unique name to use in the 
 def tfCodeFilePath = "${repoName}/${tfCodeId}.tf"   //Path and filename of the new TF code file
 //Credentials
 def gitCredentials = 'github-ssh'                   //Credential ID in Jenkins of your GitHub SSH Credentials
-def tfeCredentials = 'tfc-token'                         //Credential ID in Jenkins of your Terraform Enterprise Credentials
+def tfeCredentials = 'tfe-token'                         //Credential ID in Jenkins of your Terraform Enterprise Credentials
 
 
  pipeline {
