@@ -1,6 +1,6 @@
 terraform {
   backend "remote" {
-    hostname = "https://tfe.lab.local:443"
+    hostname = "tfe.lab.local"
     organization    = "wwt"
     workspaces {
       name  = "jenkins-tfe-vmw"
